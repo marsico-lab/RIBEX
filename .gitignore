@@ -1,0 +1,62 @@
+
+
+## Personal files
+scripts/initialize_personal.py
+
+#AUto generated or manually download-able
+__pycache__
+UniProd_*
+.ipynb_checkpoints/
+cache/
+data/
+esm/
+figures/
+ignore
+lightning_logs/
+logs/
+RBP-TSTL
+
+##Debugging purposes
+logs_*
+2023-03-20T12:04:35.673404topKmers.txt
+RBP.txt
+
+## Specifics
+juwels_notes.txt
+
+## Legacy Scrips (todos)
+ClassififerPerformanceAnalysis.ipynb
+Integrated_Gradients-BasicTests.ipynb
+Integrated_Gradients.ipynb
+Integrated_Gradients_funs_preMeanReduction.py
+RBPdomainGT-Copy1.ipynb
+RBPdomainGT.ipynb
+Task1_data_preparation.ipynb
+Task2_baseline_model.ipynb
+Task3_target_model.ipynb
+Task4_Interpretation.ipynb
+Training_Peng_1outputNeuron.ipynb
+esm2.py
+resutsl_query1.pkl
+
+
+## ignore .txt, .csv, .tsv, .gz, .h5, .hdf5, .pkl files
+*.txt
+*.csv
+*.tsv
+*.gz
+*.h5
+*.hdf5
+*.pkl
+*.npy
+*.npz
+*.pth
+*.pt
+*.ckpt
+*.log
+*.out
+*.pdf
+*.png
+*.jpg
+*.jpeg
+!RIBEX_architecture.png

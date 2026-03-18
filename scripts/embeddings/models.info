@@ -1,0 +1,7 @@
+
+
+Name                    #layers #params emb_dim
+esm1b_t33_650M_UR50S    33      0.65B   1280  
+esm2_t33_650M_UR50D     33      0.65B   1280
+esm2_t36_3B_UR50D       36      3B      2560
+esm2_t48_15B_UR50D      48      15B     5120
