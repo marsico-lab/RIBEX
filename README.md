@@ -1,6 +1,7 @@
 # RIBEX / RBP_IG
 
 RIBEX combines protein language model embeddings with graph-derived positional encodings from the human STRING protein-protein interaction network for RNA-binding protein prediction. The repository contains the raw-data builders, embedding generation, dataset assembly, FiLM-PE training, LoRA fine-tuning, and the explainability pipeline used for PE-scan clustering and enrichment.
+For more information refer to our [bioarxiv paper](https://www.biorxiv.org/content/10.64898/2026.03.13.711639v1) .
 
 <img src="./docs/images/ribex_architecture.svg" alt="RIBEX architecture" width="800" />
 
