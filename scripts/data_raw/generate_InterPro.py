@@ -42,8 +42,7 @@ from generate_utils import (
 from generate_utils import APIroot_InterPro as APIroot
 
 # Dataset Notes:
-# - We do not really know for all samples whether the sequence is canonical (TODO). But I think we
-#   can assume it!
+# - We assume the sequence is canonical for all samples (not explicitly verified).
 # - RBP positivity flag is not always unambiguous! These samples are "None" in column "positive"
 
 
@@ -69,7 +68,7 @@ def preprocessInterPro(filePath):
     Gene_IDs = []
     taxon_IDs = []
     positives_genomewide = []  # needs to be updated later! (because that is sometimes not present!)
-    # missing: Gene_Names, sequences, (positives), annotations [not actually, but we get this afterwards anyways], canonical (TODO)
+    # missing: Gene_Names, sequences, (positives), annotations [not actually, but we get this afterwards anyways], canonical (assumed)
 
     with open(filePath, "r") as f:
         file_dict = json.load(f)  # list of dicts?
@@ -124,7 +123,7 @@ def process_getInterPro(packed_parameters):
     # sequence
     # positive
     # Annotations
-    # Canonical (TODO)
+    # Canonical (assumed)
 
     # Get protein information from InterPro
     RBP_Name = row.get("Gene_Name")           

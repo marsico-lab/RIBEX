@@ -533,6 +533,6 @@ PfamTerms = { # ['Pfam_term', 'Name', 'IPR']
 
 PfamTerms = pd.DataFrame(PfamTerms, columns=['Pfam_term', 'Name', 'IPR'] )
 
-#TODO:
+# Notes:
 # - Some Pfam terms do not have IPR terms
 # - Some Pfam terms map to the same IPR: IPR032414, IPR000504

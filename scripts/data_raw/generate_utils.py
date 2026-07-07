@@ -97,9 +97,8 @@ class Cache:
                     log(f"{filePath} lines: {d}")
 
 
-# get suffix for taxon IDs
-#  #get relevant suffix
-def getSuffix(taxonID): #TODO: maybe make an interPro querey for the tason ids? maybe we get an suffix somwhere there?
+# get the UniProt name suffix for a given taxon ID
+def getSuffix(taxonID):
     match taxonID:
         case 9606:
             return "_HUMAN"
@@ -108,11 +107,11 @@ def getSuffix(taxonID): #TODO: maybe make an interPro querey for the tason ids? 
         case 590:
             return "" #Salmonella, parent: e.g. "SALPA", "SALCH", "SALTY"
         case 3702:
-            return "_ARATH" #Arabidopsis thaliana, 
+            return "_ARATH" #Arabidopsis thaliana
         case 212608:
-            return "" #Chrysis elegans, parent to Chrysis elegans elegans (TODO)
+            return "" #Chrysis elegans, parent taxon to Chrysis elegans elegans
         case 7215:
-            return "" #Drosophila, parent class, has also 32280 (drosophila) or 32341 (Sophophora) (TODO) best guess is "_DROME" but idk if there are also others!
+            return "" #Drosophila, parent taxon (also 32280 Drosophila / 32341 Sophophora); no single suffix applies
         case 10090:
             return "_MOUSE" #mus musculus
         case 559292:

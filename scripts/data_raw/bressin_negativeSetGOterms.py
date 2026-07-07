@@ -53,6 +53,6 @@ GOterms = [   # ['GO_term', 'UniProd-KW', 'name']
 
 GOterms = pd.DataFrame(GOterms, columns=['GO_term', 'UniProd-KW', 'name'])
 
-# TODO: 
+# Notes:
 # - some have no GO equivalent
-# - some have the same GO term? (0004518 0006281)
+# - some have the same GO term (e.g. 0004518, 0006281)

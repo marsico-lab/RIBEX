@@ -53,7 +53,13 @@ The Git checkout itself is used for code, helper scripts, random-search launcher
 
 The command inventory is in [pipeline.sh](pipeline.sh). The effective order is:
 
-1. Put the original source files into `${REPOSITORY}/data/data_original/bressin19`, `${REPOSITORY}/data/data_original/InterPro`, and `${REPOSITORY}/data/data_original/RIC`.
+1. Download the original source files into `${REPOSITORY}/data/data_original/{bressin19,InterPro,RIC}`:
+
+```bash
+python3 scripts/data_raw/download_data_original.py
+```
+
+   This fetches the Bressin19 FASTA files (TriPepSVM), the per-species InterPro exports (EBI InterPro API), and the RBPbase descriptive-ID tables (EMBL). Existing files are skipped, so it is safe to re-run. InterPro and RBPbase are living databases, so a fresh download may differ slightly from an older snapshot (a few added/removed proteins, extra RBPbase columns that the builders ignore); Bressin19 is static and reproduces exactly. To populate the folders manually instead, place the source files under those three directories yourself.
 2. Build the harmonised raw tables:
 
 ```bash

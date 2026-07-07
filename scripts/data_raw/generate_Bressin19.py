@@ -74,7 +74,7 @@ def process_getBressin19(packed_parameters):
 
     # Missing:
     # Annotations
-    # Canonical (TODO)
+    # Canonical (assumed)
 
     # Get protein information from InterPro
     IPannotations = None

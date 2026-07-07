@@ -1,6 +1,10 @@
 
 
 ## 1. **data_raw**: get protein data from different databases (files, web API, etc:9) and transoforms them into a semi-standard form
+python3 scripts/data_raw/download_data_original.py
+    #IN: TriPepSVM (GitHub), InterPro API, RBPbase (EMBL) - network access required
+    #OUT: source files under data_original/{bressin19,InterPro,RIC}/ (skips files already present)
+    #LOG: stdout
 python3 scripts/data_raw/generate_Bressin19.py
     #IN: files in bressin19/ 
     #OUT: bressin19.tsv

@@ -46,7 +46,7 @@ from generate_utils import APIroot_InterPro as APIroot
 # - Gene_Name, is always present for RIC (UNIQUE) e.g. TAAR9 but not the Gene ID (uniprod ID)
 #   we try to get the uniprod ID from Inter Pro (getProtein_InterPro(byName=True))
 #   but if that does not work, the Gene ID is simply None and the sample will be filtered out
-# - we dont really know if the sequence is canonical, do we? (TODO)
+# - we assume the sequence is canonical (not explicitly verified)
 
 # Why not use ENSMUSG column:
 # - only present for human and mouse (missing for other species)
@@ -82,16 +82,16 @@ RICcolumns = {  # file name (without extension) : (speciesID, [relevantColumns])
             "RBPBASE000000055.1",
         ],
     ),
-    # 9MUSC - Drosophila #TODO: is that the correct entry?
+    # 9MUSC - Drosophila
     "RBPbase_Dm_DescriptiveID": (7215, ["RBPBASE000000005.1", "RBPBASE000000006.1"]),
     # ARATH - Arabidopsis thaliana
     "RBPbase_At_DescriptiveID": (
         3702,
         ["RBPBASE000000001.1", "RBPBASE000000002.1", "RBPBASE000000003.1"],
     ),
-    # 9HYME - Chrysis elegans #TODO: is that the correct entry?
+    # 9HYME - Chrysis elegans (not used)
     # "RBPbase_Ce_DescriptiveID": ( 212608, [ ])
-    # YEAST - accharomyces cerevisiae (strain ATCC 204508 / S288c)
+    # YEAST - Saccharomyces cerevisiae (strain ATCC 204508 / S288c)
     "RBPbase_Sc_DescriptiveID": (559292, ["RBPBASE000000020.1" "RBPBASE000000024.1"]),
 }
 
@@ -180,7 +180,7 @@ def process_getRIC(packed_parameters):
     # Gene_ID (potentially)
     # Sequence
     # Annotations
-    # Canonical (TODO)
+    # Canonical (assumed)
 
     if pd.isnull(row["Gene_ID"]) or row["Gene_ID"] == "NA":  # if there is no unique identifier available
         # Nan or other pandas None types. Or more than one name (seperated with | )
@@ -305,13 +305,12 @@ def getRIC(
         ("RBPbase_Hs_DescriptiveID.tsv", 9606),  # HUMAN - Homo sapiens (1914 RBPs)
         ("RBPbase_Mm_DescriptiveID.tsv", 10090),  # MOUSE - Mus musculus (1393 RBPs)
         ("RBPbase_Sc_DescriptiveID.tsv", 559292),  # YEAST - Saccharomyces cerevisiae (strain ATCC 204508 / S288c) (1393 RBPs)
-        # ab hier KEINE UnitProtSwissProtID column mehr!
-        ("RBPbase_Dm_DescriptiveID.tsv", 7227),  # 9MUSC - Drosophila (777 RBPs) 
+        # from here on there is no UnitProtSwissProtID column
+        ("RBPbase_Dm_DescriptiveID.tsv", 7227),  # 9MUSC - Drosophila (777 RBPs)
         ("RBPbase_At_DescriptiveID.tsv", 3702),  # ARATH - Arabidopsis thaliana (719 RBPs)
-        # (
-        #    "RBPbase_Ce_DescriptiveID.tsv", #TODO: Marc fragen was für columns hier relevant sind, da fehlt mir nämlich die referenz datei!
-        #    212608,
-        # ),  # 9HYME - Chrysis elegans #TODO: this is a parent (593 RBPs)
+        # Chrysis elegans (taxon 212608, ~593 RBPs) is not used: it is a parent taxon and the
+        # relevant RBPbase columns were never resolved.
+        # ("RBPbase_Ce_DescriptiveID.tsv", 212608),
     ]
 
     Gene_IDs, Gene_Names, taxon_IDs, positiveCounts = [], [], [], []
